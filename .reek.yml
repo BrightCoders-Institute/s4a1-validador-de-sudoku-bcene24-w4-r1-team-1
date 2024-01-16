@@ -1,0 +1,24 @@
+---
+detectors:
+  UncommunicativeVariableName:
+    accept:
+      - x
+      - y
+      - i
+      - j
+    reject:
+      - helper
+      - foobar
+  UncommunicativeParameterName:
+    accept:
+      - x
+      - y
+    reject:
+      - foobar
+  DuplicateMethodCall:
+    max_calls: 3
+  FeatureEnvy:
+    exclude:
+      - "Matrix#full?"
+  NestedIterators:
+    max_allowed_nesting: 2
