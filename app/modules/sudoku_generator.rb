@@ -6,7 +6,10 @@ require 'httparty'
 module SudokuGenerator
   API_URL = 'https://sugoku.onrender.com/board?difficulty=random'
 
-  def generate_sudoku_board
-    HTTParty.get(API_URL)['board']
+  def self.generate_sudoku_board
+    response = HTTParty.get(API_URL)
+    raise HTTParty::Error, 'The Sudoku board generation request was not successful' unless response.success?
+
+    response['board']
   end
 end

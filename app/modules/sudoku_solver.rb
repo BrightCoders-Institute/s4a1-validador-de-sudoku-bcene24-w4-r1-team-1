@@ -1,29 +1,20 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 
 require 'httparty'
 
 # Module to solve an uncomplete Sudoku board.
 module SudokuSolver
-  private
+  API_URL = 'https://sugoku.onrender.com/solve'
 
-  def encode_board(board)
-    board.each.with_index.reduce('') do |result, (row, i)|
-      "#{result}%5B#{URI.encode_www_form_component(row)}%5D#{i == board.length - 1 ? '' : '%2C'}"
-    end
+  private_class_method def self.encode_params(params)
+    "#{URI.encode_www_form({ board: params }).gsub('+', '').gsub('&board=', '%2C').gsub('board=', 'board=%5B')}%5D"
   end
 
-  def encode_params(params)
-    params.map { |key, value| "#{key}=#{encode_board(value).gsub('+', '')}" }.join('&')
-  end
-
-  public
-
-  def solve_sudoku_board(sudoku_board)
-    puts encode_params({ 'board' => sudoku_board })
+  def self.solve_sudoku_board(sudoku_board)
     HTTParty.post(
-      'https://sugoku.onrender.com/solve',
+      API_URL,
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode_params({ 'board' => sudoku_board })
+      body: encode_params(sudoku_board)
     )
   end
 end
