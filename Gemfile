@@ -11,4 +11,4 @@ gem 'rubycritic', require: false
 
 gem 'matrix', '~> 0.4.2'
 
-gem 'httparty', '~> 0.13.7'
+gem 'httparty', '~> 0.21.0'

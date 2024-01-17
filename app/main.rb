@@ -38,12 +38,31 @@ sudoku_juego = [
   [3, 4, 5, 2, 8, 6, 1, 7, 9]
 ]
 
-m = Sudoku.new
-puts m.sudoku_board_is_valid?(tablero_true)
-puts m.solve_sudoku_board(tablero_true)
+matriz_extra = [
+  [0, 0, 0, 0, 0, 0, 8, 0, 0],
+  [0, 0, 4, 0, 0, 8, 0, 0, 9],
+  [0, 7, 0, 0, 0, 0, 0, 0, 5],
+  [0, 1, 0, 0, 7, 5, 0, 0, 8],
+  [0, 5, 6, 0, 9, 1, 3, 0, 0],
+  [7, 8, 0, 0, 0, 0, 0, 0, 0],
+  [0, 2, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 9, 3, 0, 0, 1, 0],
+  [0, 0, 5, 7, 0, 0, 4, 0, 3]
+]
 
-puts m.sudoku_board_is_valid?(tablero_false)
-puts m.solve_sudoku_board(tablero_false)
+begin
+  m = Sudoku.new(tablero_true)
+  puts m.sudoku_board_is_valid?(tablero_true)
+  puts m.solve_sudoku_board(tablero_true).inspect
 
-puts m.sudoku_board_is_valid?(sudoku_juego)
-puts m.solve_sudoku_board(sudoku_juego)
+  puts m.sudoku_board_is_valid?(tablero_false)
+  puts m.solve_sudoku_board(tablero_false).inspect
+
+  puts m.sudoku_board_is_valid?(sudoku_juego)
+  puts m.solve_sudoku_board(sudoku_juego).inspect
+
+  puts m.sudoku_board_is_valid?(matriz_extra)
+  puts m.solve_sudoku_board(matriz_extra).inspect
+rescue StandardError => e
+  puts e.full_message
+end
