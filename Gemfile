@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '3.1.3'
+ruby '3.2.2'
 
 # gem "rails"
 gem 'rubocop', require: false
@@ -17,4 +17,4 @@ gem 'httparty', '~> 0.21.0'
 
 gem 'json', '~> 2.7'
 
-gem "rspec", "~> 3.12"
+gem 'rspec', '~> 3.12'
