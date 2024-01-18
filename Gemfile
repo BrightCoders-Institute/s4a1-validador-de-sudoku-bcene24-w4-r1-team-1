@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '3.2.2'
+ruby '3.1.3'
 
 # gem "rails"
 gem 'rubocop', require: false
@@ -16,3 +16,5 @@ gem 'matrix', '~> 0.4.2'
 gem 'httparty', '~> 0.21.0'
 
 gem 'json', '~> 2.7'
+
+gem "rspec", "~> 3.12"

@@ -15,7 +15,7 @@ module SudokuValidator
   end
 
   private_class_method def self.values_list_is_valid?(list)
-    list.all? { |n| (0..10).include?(n) }
+    list.all? { |n| (0..9).include?(n) }
   end
 
   private_class_method def self.board_values_list_is_valid?(list)
@@ -26,7 +26,7 @@ module SudokuValidator
     board_values_list_is_valid?(sudoku_board.minor(box_row, column_row).to_a.flatten)
   end
 
-  private_class_method def self.sudoku_boxes_are_valid?(sudoku_board)
+  def self.sudoku_boxes_are_valid?(sudoku_board)
     3.times do |box_row|
       3.times do |column_row|
         return false unless sudoku_box_is_valid?(sudoku_board,
